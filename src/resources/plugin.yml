@@ -1,0 +1,17 @@
+author: ZephireNZ
+database: false
+main: me.ZephireNZ.FlyCheck.FlyCheck
+name: FlyCheck
+startup: postworld
+version: ${version}
+softdepend: [FlyPotions]
+commands:
+    flycheck:
+        description: Check a players ability to fly.
+        usage: |
+            Usage:
+            /<command> [player]
+permissions:
+    flycheck.check:
+        description: Allows using /flycheck.
+        default: op
