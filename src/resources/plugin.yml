@@ -4,6 +4,7 @@ main: me.ZephireNZ.FlyCheck.FlyCheck
 name: FlyCheck
 startup: postworld
 version: ${version}
+depend: [ZephCore]
 softdepend: [FlyPotions]
 commands:
     flycheck:
