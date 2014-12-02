@@ -1,6 +1,6 @@
 package me.ZephireNZ.FlyCheck;
 
-import me.ZephireNZ.FlyPotions.FlyPotions;
+import nz.co.noirland.noirfly.NoirFly;
 import nz.co.noirland.zephcore.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -13,17 +13,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class FlyCheck extends JavaPlugin {
 
-    public FlyPotions flyPotions;
+    public NoirFly noirFly;
 
     @Override
     public void onEnable() {
-        flyPotions = getFlyPotions();
+        noirFly = getNoirFly();
     }
 
-    public FlyPotions getFlyPotions() {
-        Plugin fpPlugin = getServer().getPluginManager().getPlugin("FlyPotions");
-        if(fpPlugin != null && fpPlugin instanceof FlyPotions) {
-            return (FlyPotions) fpPlugin;
+    public NoirFly getNoirFly() {
+        Plugin flyPlugin = getServer().getPluginManager().getPlugin("NoirFly");
+        if(flyPlugin != null && flyPlugin instanceof NoirFly) {
+            return (NoirFly) flyPlugin;
         }else{
             return null;
         }
@@ -53,10 +53,10 @@ public class FlyCheck extends JavaPlugin {
 
         if(player.getGameMode().equals(GameMode.CREATIVE)) {
             sendString += sendString += ChatColor.GREEN + " can fly "   + ChatColor.RESET + "because of creative.";
-        } else if(flyPotions != null && flyPotions.isUsingPotion(player.getUniqueId())) {
-            sendString += ChatColor.GREEN + " can fly " + ChatColor.RESET + "because of fly potions.";
+        } else if(noirFly != null && noirFly.isFlying(player.getUniqueId())) {
+            sendString += ChatColor.GREEN + " can fly " + ChatColor.RESET + "because of NoirFly.";
         } else if(player.getAllowFlight()) {
-            sendString += ChatColor.GREEN + " can fly " + ChatColor.RESET + "because of another plugin or /fly.";
+            sendString += ChatColor.GREEN + " can fly " + ChatColor.RESET + "because of another plugin";
         } else {
             sendString += ChatColor.RED   + " CANNOT fly" + ChatColor.RESET + ".";
         }
